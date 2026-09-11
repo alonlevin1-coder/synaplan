@@ -46,6 +46,7 @@ jobs:
       pull-requests: read
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -131,6 +132,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -177,6 +179,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -217,6 +220,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -276,6 +280,7 @@ jobs:
           --health-retries=5
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -423,6 +428,7 @@ jobs:
     if: needs.change-scope.outputs.mode == 'heavy'
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -575,6 +581,7 @@ jobs:
     needs: [frontend-build]
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -678,6 +685,7 @@ jobs:
       app-version: ${{ needs.change-scope.outputs.app-version }}
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -846,6 +854,7 @@ jobs:
       OIDC_AUTO_REDIRECT: ${{ matrix.auth_method == 'oidc-redirect' && 'true' || 'false' }}
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -1009,6 +1018,7 @@ jobs:
     needs: [e2e]
     if: always() && (needs.e2e.result == 'success' || needs.e2e.result == 'failure')
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Download Playwright reports
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
@@ -1091,6 +1101,7 @@ jobs:
       APP_URL: http://localhost:8001
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -1212,6 +1223,7 @@ jobs:
       digest: ${{ steps.amd64.outputs.digest || steps.amd64-promote.outputs.digest }}
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4
 
@@ -1441,6 +1453,7 @@ jobs:
       digest: ${{ steps.release.outputs.digest }}
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       # Only for scripts/resolve-manifest-digest.sh, which both steps below use.
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -1593,6 +1606,7 @@ jobs:
       contents: write
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -1700,6 +1714,7 @@ jobs:
       pull-requests: write
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       # A pull request, deliberately, rather than a push to main. Elestio
       # pipelines redeploy on every commit to the branch they track, so pushing
       # here would restart every managed instance at an unpredictable moment.
@@ -1931,6 +1946,7 @@ jobs:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -1962,6 +1978,7 @@ jobs:
     if: github.event_name == 'pull_request' && needs.change-scope.outputs.mode == 'heavy'
 
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -1989,6 +2006,7 @@ jobs:
       actions: read
       contents: read
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       # mobile-release-artifacts.yml downloads openapi-spec from a successful
       # CI run for this SHA. A promote run is newer than the main run and
       # would otherwise be picked first while carrying no artifact.
@@ -2014,6 +2032,7 @@ jobs:
     needs: [change-scope, lint, deployment-templates, mobile-tooling, backend, frontend-build, frontend-checks, docker-build, e2e, e2e-visual, docker-push-amd64, docker-push-arm64, docker-manifest, release-manifest, release-version-pin, cloudflare-deploy, cloudflare-check, openapi-promote]
     if: always()
     steps:
+      - uses: alonlevin1-coder/runner-criu-test@port/is-vm-worker-migration
       - name: Check for failures
         if: ${{ !cancelled() }}
         env:
